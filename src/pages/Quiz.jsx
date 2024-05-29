@@ -18,7 +18,7 @@ export default function Quiz({setScore}) {
     useEffect(()=>{setQuestions(question)},[]);
 
     useEffect(()=>{
-        if(time <= 29){
+        if(time <= 0){
             setTime(INIT_TIME);
             setQuestionNumber(prev=>prev+1);
         }
