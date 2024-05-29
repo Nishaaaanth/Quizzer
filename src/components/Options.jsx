@@ -6,7 +6,7 @@ const Options = function({questionNumber, setScore}) {
 
     return (
             <div>
-                <div className="text-xl text-center pt-16">
+                <div className="text-lg text-center pt-16">
                     <div className="flex justify-center">
                         <button
                             onClick={()=>{
