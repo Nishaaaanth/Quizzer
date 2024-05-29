@@ -36,7 +36,7 @@ const Options = function({questionNumber, setScore}) {
                             className="m-3 p-4 bg-red-200 rounded-lg font-semibold shadow-md min-w-24">{questions[questionNumber].option4}</button>
                     </div>
                 </div>
-                <div className="flex justify-center mt-16 font-bold text-2xl italic">Your Choice: {option}</div>
+                <div className="flex justify-center mt-16 font-bold text-xl italic">Your Choice: {option}</div>
             </div>
     );
 };
