@@ -1,8 +1,18 @@
-import {useState, memo} from "react";
+import {useEffect,useState, memo} from "react";
 import questions from "../question";
 
-const Options = function({questionNumber, setScore}) {
+const Options = function({questionNumber, setScore, time, setAnswer, score, answer}) {
     const [option, setOption] = useState("");
+    const [chosen, setChosen] = useState("");
+
+    useEffect(()=>{
+        if(time == 0){
+            let qNum = questionNumber + 1;
+            setAnswer(answer => [...answer, {qNum, answer: option}]);
+            if(option == questions[questionNumber].answer) setScore(score=>score+1)
+            setOption("");
+        }
+    },[time]);
 
     return (
             <div>
@@ -10,28 +20,24 @@ const Options = function({questionNumber, setScore}) {
                     <div className="flex justify-center">
                         <button
                             onClick={()=>{
-                                setOption(questions[questionNumber].option1)
-                                if(questions[questionNumber].option1 == questions[questionNumber].answer) setScore((prev) => prev+1);
+                                    setOption(questions[questionNumber].option1)
                                 }}
                             className="m-3 p-4 bg-red-200 rounded-lg font-semibold shadow-md min-w-24">{questions[questionNumber].option1}</button>
                         <button
                             onClick={()=>{
-                                setOption(questions[questionNumber].option2)
-                                if(questions[questionNumber].option2 == questions[questionNumber].answer) setScore((prev) => prev+1);
+                                    setOption(questions[questionNumber].option2)
                                 }}
                             className="m-3 p-4 bg-red-200 rounded-lg font-semibold shadow-md min-w-24">{questions[questionNumber].option2}</button>
                     </div>
                     <div className="flex justify-center">
                         <button
                             onClick={()=>{
-                                setOption(questions[questionNumber].option3)
-                                if(questions[questionNumber].option3 == questions[questionNumber].answer) setScore((prev) => prev+1);
+                                    setOption(questions[questionNumber].option3)
                                 }}
                             className="m-3 p-4 bg-red-200 rounded-lg font-semibold shadow-md min-w-24">{questions[questionNumber].option3}</button>
                         <button
                             onClick={()=>{
-                                setOption(questions[questionNumber].option4)
-                                if(questions[questionNumber].option4 == questions[questionNumber].answer) setScore((prev) => prev+1);
+                                    setOption(questions[questionNumber].option4)
                                 }}
                             className="m-3 p-4 bg-red-200 rounded-lg font-semibold shadow-md min-w-24">{questions[questionNumber].option4}</button>
                     </div>

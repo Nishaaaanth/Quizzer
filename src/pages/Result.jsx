@@ -1,8 +1,10 @@
-import questions from "../question"
+import {useNavigate} from "react-router-dom";
+import questions from "../question";
 
-export default function Result({score}) {
+export default function Result({score, answer}) {
     let animate = "";
     let comment = "";
+    const navigate = useNavigate();
 
     if(score <= 10) animate = "animate-pulse";
     else if(score <= questions.length-1)  animate = "animate-bounce";
@@ -12,10 +14,11 @@ export default function Result({score}) {
     else if(score > 10) comment = "Good";
 
     return(
-        <div className="font-mono bg-red-100 h-screen p-3 flex justify-center items-center flex-col font-bold text-2xl">
+        <div className="font-mono bg-red-100 overflow-auto h-screen p-3 flex justify-center items-center flex-col font-bold text-2xl">
             <p className="py-8 px-2">Your Score out of 20 is:</p>
             <p className={`${animate} text-8xl`}>{score}</p>
             <p className="text-3xl">{comment}</p>
+            <button className="mt-14 mb-6 p-4 bg-red-200 rounded-lg font-semibold shadow-md touch:bg-pink-200 touch:text-gray-500 touch:shadow-none touch:translate-y-1 animate-pulse" onClick={()=>navigate("/answers")}>My Answers</button>
         </div>
     );
 }

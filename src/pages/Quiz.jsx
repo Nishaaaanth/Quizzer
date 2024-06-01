@@ -9,7 +9,7 @@ import Display from "../components/Display";
 const INIT_TIME=30;
 const INIT_SCORE=0;
 
-export default function Quiz({setScore}) {
+export default function Quiz({setScore, setAnswer, score, answer}) {
     const [time, setTime] = useState(INIT_TIME);
     const [questionNumber, setQuestionNumber] = useState(0);
     const [questions, setQuestions] = useState([]);
@@ -42,7 +42,7 @@ export default function Quiz({setScore}) {
             <div className="font-mono bg-red-100 h-full p-3 flex flex-col">
                 <Timer time={time}/>
                 <Question questionNumber={questionNumber} />            
-                <Options setScore={setScore} questionNumber={questionNumber}/>
+                <Options setScore={setScore} questionNumber={questionNumber} time={time} setAnswer={setAnswer} score={score} answer={answer}/>
                 <Display />
             </div>
         </div>
