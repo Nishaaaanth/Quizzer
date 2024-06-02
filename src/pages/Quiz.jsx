@@ -6,7 +6,7 @@ import Timer from "../components/Timer";
 import Options from "../components/Options";
 import Display from "../components/Display";
 
-const INIT_TIME=30;
+const INIT_TIME=15;
 const INIT_SCORE=0;
 
 export default function Quiz({setScore, setAnswer, score, answer}) {
