@@ -18,7 +18,6 @@ export default function Result({score, answer}) {
             <p className="py-8 px-2">Your Score out of 20 is:</p>
             <p className={`${animate} text-8xl`}>{score}</p>
             <p className="text-3xl">{comment}</p>
-            <button className="mt-14 mb-6 p-4 bg-red-200 rounded-lg font-semibold shadow-md touch:bg-pink-200 touch:text-gray-500 touch:shadow-none touch:translate-y-1 animate-pulse" onClick={()=>navigate("/answers")}>My Answers</button>
         </div>
     );
 }

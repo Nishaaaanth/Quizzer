@@ -1,15 +1,14 @@
-import {useEffect, useState, useRef} from "react";
+import {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import Question from "../components/Question";
-import question from "../question";
 import Timer from "../components/Timer";
 import Options from "../components/Options";
-import Display from "../components/Display";
+import question from "../question";
 
 const INIT_TIME=15;
 const INIT_SCORE=0;
 
-export default function Quiz({setScore, setAnswer, score, answer}) {
+export default function Quiz({setScore, score}) {
     const [time, setTime] = useState(INIT_TIME);
     const [questionNumber, setQuestionNumber] = useState(0);
     const [questions, setQuestions] = useState([]);
@@ -42,8 +41,7 @@ export default function Quiz({setScore, setAnswer, score, answer}) {
             <div className="font-mono bg-red-100 h-full p-3 flex flex-col">
                 <Timer time={time}/>
                 <Question questionNumber={questionNumber} />            
-                <Options setScore={setScore} questionNumber={questionNumber} time={time} setAnswer={setAnswer} score={score} answer={answer}/>
-                <Display />
+                <Options setScore={setScore} questionNumber={questionNumber} time={time} INIT_TIME={INIT_TIME}/>
             </div>
         </div>
     );

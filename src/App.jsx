@@ -1,7 +1,6 @@
 import Home from "./pages/Home";
 import Quiz from "./pages/Quiz";
 import Result from "./pages/Result";
-import Answers from "./pages/Answers";
 import Nav from "./components/Nav";
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import {useState} from "react";
@@ -17,8 +16,8 @@ function App() {
             <Routes>
                 <Route path='/' element={<Home />} />
                 <Route path='/quiz' element={<Quiz setScore={setScore} setAnswer={setAnswer} score={score} answer={answer}/>} />
-                <Route path='/result' element={<Result score={score} answer={answer} />} />
-                <Route path='/answers' element={<Answers answer={answer}/>} />
+                <Route path='/result' element={<Result score={score} />} />
+              {/*<Route path='/answers' element={<Answers answer={answer}/>} />*/}
             </Routes>
         </BrowserRouter>
     </main>
