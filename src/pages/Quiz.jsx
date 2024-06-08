@@ -5,11 +5,13 @@ import Timer from "../components/Timer";
 import Options from "../components/Options";
 import question from "../question";
 
-const INIT_TIME=15;
+const INIT_TIME=10;
+const ADD_TIME=4
+const TIME=INIT_TIME+ADD_TIME;
 const INIT_SCORE=0;
 
 export default function Quiz({setScore, score}) {
-    const [time, setTime] = useState(INIT_TIME);
+    const [time, setTime] = useState(TIME);
     const [questionNumber, setQuestionNumber] = useState(0);
     const [questions, setQuestions] = useState([]);
     const navigate = useNavigate();
@@ -18,7 +20,7 @@ export default function Quiz({setScore, score}) {
 
     useEffect(()=>{
         if(time <= 0){
-            setTime(INIT_TIME);
+            setTime(TIME);
             setQuestionNumber(prev=>prev+1);
         }
         const interval = setInterval(()=>{
@@ -39,9 +41,9 @@ export default function Quiz({setScore, score}) {
     return(
         <div className="font-mono bg-red-100 h-screen p-3">
             <div className="font-mono bg-red-100 h-full p-3 flex flex-col">
-                <Timer time={time}/>
+                <Timer time={time} />
                 <Question questionNumber={questionNumber} />            
-                <Options setScore={setScore} questionNumber={questionNumber} time={time} INIT_TIME={INIT_TIME}/>
+                <Options setScore={setScore} questionNumber={questionNumber} time={time} INIT_TIME={TIME} />
             </div>
         </div>
     );

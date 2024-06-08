@@ -1,9 +1,9 @@
-import {forwardRef} from "react";
+import {useEffect} from "react";
 
-const Timer = forwardRef(function Timer({time}, ref) {
+const Timer = function Timer({time}) {
     return (
-        <div className="text-xl font-semibold pb-2 mb-4" ref={ref}>Time remaining: {time}</div>
+        <div className="text-xl font-semibold pb-2 mb-4">Time remaining: {time-4<=0 ? 0: time-4}</div>
     );
-});
+};
 
 export default Timer;

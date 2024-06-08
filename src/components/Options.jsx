@@ -3,7 +3,6 @@ import questions from "../question";
 
 const Options = function({questionNumber, setScore, time, INIT_TIME}) {
     const [option, setOption] = useState("");
-    const [clicked, setClicked] = useState(false);
     const [display, setDisplay] = useState("");
     const [correct, setCorrect] = useState("");
 
@@ -12,21 +11,22 @@ const Options = function({questionNumber, setScore, time, INIT_TIME}) {
             setOption("");
             setDisplay("");
             setCorrect("");
-            setClicked(false);
         }
     }, [time, questionNumber]);
 
     useEffect(()=>{
-        if(clicked) {
+        if(time == 4) {
             if(option == questions[questionNumber].answer) {
                 setScore(prev=>prev+1);
                 setDisplay(`${option} is correct`);
-            }else {
+            }else if(option == "") {
+                setDisplay("");
+            } else {
                 setDisplay(`${option} is wrong`);
                 setCorrect(`correct: ${questions[questionNumber].answer}`);
             }
         }
-    }, [clicked]);
+    }, [time]);
     
     return (
             <div>
@@ -35,32 +35,24 @@ const Options = function({questionNumber, setScore, time, INIT_TIME}) {
                         <button
                             onClick={()=>{
                                     setOption(questions[questionNumber].option1)
-                                    setClicked(true);
                                 }}
-                            disabled={clicked}
                             className="m-3 p-4 bg-red-200 rounded-lg font-semibold shadow-md min-w-24">{questions[questionNumber].option1}</button>
                         <button
                             onClick={()=>{
                                     setOption(questions[questionNumber].option2)
-                                    setClicked(true);
                                 }}
-                            disabled={clicked}
                             className="m-3 p-4 bg-red-200 rounded-lg font-semibold shadow-md min-w-24">{questions[questionNumber].option2}</button>
                     </div>
                     <div className="flex justify-center">
                         <button
                             onClick={()=>{
                                     setOption(questions[questionNumber].option3)
-                                    setClicked(true);
                                 }}
-                            disabled={clicked}
                             className="m-3 p-4 bg-red-200 rounded-lg font-semibold shadow-md min-w-24">{questions[questionNumber].option3}</button>
                         <button
                             onClick={()=>{
                                     setOption(questions[questionNumber].option4)
-                                    setClicked(true);
                                 }}
-                            disabled={clicked}
                             className="m-3 p-4 bg-red-200 rounded-lg font-semibold shadow-md min-w-24">{questions[questionNumber].option4}</button>
                     </div>
                 </div>
