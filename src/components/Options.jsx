@@ -21,6 +21,7 @@ const Options = function({questionNumber, setScore, time, INIT_TIME}) {
                 setDisplay(`${option} is correct`);
             }else if(option == "") {
                 setDisplay("");
+                setCorrect(`correct: ${questions[questionNumber].answer}`);
             } else {
                 setDisplay(`${option} is wrong`);
                 setCorrect(`correct: ${questions[questionNumber].answer}`);
